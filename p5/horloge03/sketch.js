@@ -18,11 +18,11 @@ var Line = {
 
 var lines = [];
 
-var r0 = 80;
-var r1 = 130;
-var r2 = 180;
+var r0 = 75;
+var r1 = 100;
+var r2 = 50;
 
-var NBmax = 400;
+var NBmax = 200;
 
 
 function setup() {
@@ -79,9 +79,13 @@ function draw() {
   });
 
   stroke(255);
-  noFill();
+  fill(0);
+  // noFill();
+  fill(0, 255, 255);
   ellipse(x0, y0, 30, 30);
+  fill(100, 255, 255);
   ellipse(x1, y1, 20, 20);
+  fill(200, 255, 255);
   ellipse(x2, y2, 10, 10);
 
 
