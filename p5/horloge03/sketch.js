@@ -88,6 +88,4 @@ function draw() {
   fill(200, 255, 255);
   ellipse(x2, y2, 10, 10);
 
-
-
 }
