@@ -20,17 +20,13 @@ function draw() {
   // noFill();
   // ellipse(200, 200, 300, 300);
 
-
-
   strokeWeight(8);
   stroke(100, 150, 255);
   noFill();
   let hr2 = hr % -12 + mn / 60 + sc / 3600;
   let endh = map(hr2, 0, 12, 0, 360);
   let r = 100;
-  arc(0, 0, 2 * r, 2 * r, 0, endh);
-  line(0, 0, r * 1, r * 0);
-  line(0, 0, r * cos(hr2 * 30), r * sin(hr2 * 30));
+  arc(0, 0, 2 * r, 2 * r, 0, endh, PIE);
 
 
   strokeWeight(4);
@@ -38,18 +34,15 @@ function draw() {
   r = 120;
   let mn2 = mn + sc / 60;
   let endm = map(mn2, 0, 60, 0, 360);
-  arc(0, 0, 2 * r, 2 * r, 0, endm);
-  line(0, 0, r * 1, r * 0);
-  line(0, 0, r * cos(mn2 * 6), r * sin(mn2 * 6));
+  arc(0, 0, 2 * r, 2 * r, 0, endm, PIE);
 
   r = 140;
   strokeWeight(2);
   stroke(255, 100, 150);
-
   let ends = map(sc, 0, 60, 0, 360);
-  arc(0, 0, 2 * r, 2 * r, 0, ends); //, CHORD); //OPEN); //PIE);
-  line(0, 0, r * 1, r * 0);
-  line(0, 0, r * cos(sc * 6), r * sin(sc * 6));
+  arc(0, 0, 2 * r, 2 * r, 0, ends + 0, PIE); //, CHORD); //OPEN); //PIE);
+  // line(0, 0, r * 1, r * 0);
+  // line(0, 0, r * cos(sc * 6), r * sin(sc * 6));
 
 
   // fill(255);
