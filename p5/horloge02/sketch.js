@@ -32,7 +32,7 @@ function draw() {
   let tetas = map(sc, 0, 60, -90, 270);
   let centerS = createVector((rm + rs) * cos(tetas), (rm + rs) * sin(tetas)).add(centerM);
 
-  console.log(centerH.x);
+  // console.log(centerH.x);
   strokeWeight(2);
   noFill();
   stroke(255, 100, 150);
