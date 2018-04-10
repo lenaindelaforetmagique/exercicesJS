@@ -4,8 +4,8 @@ var teta0 = 0;
 var teta1 = 0;
 var pas0 = 10;
 
-var r1 = r0 / 2;
-var r2 = r1 / 2;
+var r1 = r0 * (Math.random() * 2 - 1);
+var r2 = r1 * Math.random() * 2;
 
 var WIDTH = 600;
 var HEIGHT = 600;
@@ -27,7 +27,7 @@ var Points = {
   draw: function() {
     var color = 255;
     for (var i = this.listPts.length - 1; i >= 0; i--) {
-      color -= this.stepColor;
+      //color -= this.stepColor;
       stroke(color);
       point(this.listPts[i].x, this.listPts[i].y);
     }
@@ -40,22 +40,23 @@ function setup() {
   frameRate(30);
   createCanvas(WIDTH, HEIGHT);
   angleMode(DEGREES);
-  Points.init(500);
+  Points.init(10000);
 }
 
 function draw() {
   translate(WIDTH / 2, HEIGHT / 2);
   background(0);
 
+  if (mouseIsPressed) {
+    Points.listPts = [];
+    var dx = mouseX - WIDTH / 2;
+    var dy = mouseY - HEIGHT / 2;
+    var r = Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5);
+    var alpha = Math.acos(dx / r);
 
-  var dx = mouseX - WIDTH / 2;
-  var dy = mouseY - HEIGHT / 2;
-  var r = Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5);
-  var alpha = Math.acos(dx / r);
-
-  r1 = Math.cos(r * PI / 2 / r0) * r0 / 2;
-  r2 = r1 * alpha * 2 / PI;
-
+    r1 = Math.cos(r * PI / 2 / r0) * r0 / 2;
+    r2 = r1 * alpha * 2 / PI;
+  }
   var x1 = (r0 - r1) * cos(teta0);
   var y1 = (r0 - r1) * sin(teta0);
 
