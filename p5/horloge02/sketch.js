@@ -15,14 +15,13 @@ function draw() {
   let mn = minute();
   let sc = second();
 
-  hr = map(mouseX, 0, 400, 0, 12);
-  mn = map(mouseX, 0, 400, 0, 60);
-  sc = map(mouseY, 0, 200, 0, 60);
+  // hr = map(mouseX, 0, 400, 0, 12);
+  // mn = map(mouseX, 0, 400, 0, 60);
+  // sc = map(mouseY, 0, 200, 0, 60);
 
-
-  let rh = 10;
-  let rm = rh * 3;
-  let rs = rm * 3;
+  let rh = 90;
+  let rm = rh / 3;
+  let rs = rm / 3;
   let tetah = map(hr % 12, 0, 12, -90, 270);
   let centerH = createVector(rh * cos(tetah), rh * sin(tetah));
 
