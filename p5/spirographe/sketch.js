@@ -3,7 +3,7 @@ var r0 = 100;
 var teta0 = 0;
 var teta1 = 0;
 //var dteta1 = 5; // Math.PI / 180;
-var ds2 = 1; // pixels
+var ds2 = 5; // pixels
 
 var r1 = -r0 / 2; // * (Math.random() * 2 - 1);
 var r2 = Math.abs(r1); // * Math.random() * 2;
