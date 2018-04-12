@@ -5,7 +5,7 @@ var teta1 = 0;
 //var dteta1 = 5; // Math.PI / 180;
 var ds2 = 5; // pixels
 
-var r1 = -r0 / 2; // * (Math.random() * 2 - 1);
+var r1 = r0 / 2; // * (Math.random() * 2 - 1);
 var r2 = Math.abs(r1); // * Math.random() * 2;
 
 var WIDTH = 600;
@@ -66,8 +66,8 @@ function draw() {
   var x1 = (r0 + r1) * cos(teta0);
   var y1 = (r0 + r1) * sin(teta0);
 
-  var x2 = x1 + r2 * cos(teta1);
-  var y2 = y1 + r2 * sin(teta1);
+  var x2 = x1 + r2 * cos(teta1 + teta0);
+  var y2 = y1 + r2 * sin(teta1 + teta0);
 
   strokeWeight(2);
   stroke(255 / 2);
