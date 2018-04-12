@@ -71,7 +71,7 @@ function draw() {
 
   strokeWeight(2);
   stroke(255 / 2);
-  smooth();
+  // smooth(); // semble compatible avec derniere version seulement
   noFill();
 
   ellipse(0, 0, r0 * 2, r0 * 2);
