@@ -42,10 +42,11 @@ var Circle = {
     if (this.parent !== null) {
       this.xC = this.parent.xP;
       this.yC = this.parent.yP;
-    } else {
-      this.xC = 0;
-      this.yC = 0;
     }
+    // else {
+    //   this.xC = 0;
+    //   this.yC = 0;
+    // }
     this.xP = this.xC + this.r * Math.cos(this.teta);
     this.yP = this.yC + this.r * Math.sin(this.teta);
     if (this.child !== null) {

@@ -4,11 +4,11 @@ var HEIGHT = 600;
 var circle0 = Object.create(Circle);
 var r = 100;
 var t = 0;
-var dt = Math.PI / 1800;
+var dt = Math.PI / (360 * 3);
 circle0.init(r, t, dt);
 for (var i = 0; i < 3; i++) {
-  r /= 2;
-  dt *= 5;
+  r /= (1 + Math.random() * 2);
+  dt *= 4 * Math.random();
   var circle2 = Object.create(Circle);
   circle2.init(r, t, dt);
   circle0.addChild(circle2);
