@@ -4,15 +4,6 @@ var HEIGHT = 600;
 var circle0 = Object.create(Circle);
 circle0.init(0, 0, 0);
 
-// for (var i = 0; i < 3; i++) {
-//   r /= 2;
-//   dt *= 5;
-//   var circle2 = Object.create(Circle);
-//   circle2.init(r, t, dt);
-//   circle0.addChild(circle2);
-// }
-
-
 var Shape = {
   init: function() {
     this.points = [];
@@ -39,6 +30,8 @@ var Shape = {
       pt.init(this.points[k].x - WIDTH / 2, this.points[k].y - HEIGHT / 2);
       pts.push(pt);
     }
+
+    // -- calcul abscisse curviligne, ds, lTot
     var dt = []; // delta t
     var t = []; // t abscisse curviligne
     var lTot = 0; // chemin total
@@ -59,18 +52,15 @@ var Shape = {
     dt.push(dl);
     t.push(lTot);
     lTot += dl;
-    // console.log(lTot);
 
     // -- Coefficients de Fourier --
     for (var n = -nMax; n <= nMax; n++) {
       // -- harmonique n --
       var circle = Object.create(Circle);
-
       var periode = -2 * Math.PI * n / lTot;
-
       var res = Object.create(Complex);
-      // Sum((a_k+i×b_k)×e^(-i×2nπ×k/N)/N
 
+      // Sum((a_k+i×b_k)×e^(-i×2nπ×k/N)/N
       for (var k = 0; k < nb; k++) {
         var nb2 = Object.create(Complex);
         nb2.init2(1, periode * t[k]);
@@ -81,64 +71,52 @@ var Shape = {
       res.kmult(1 / lTot);
 
       circle.init(res.mod(), res.arg(), periode);
-      //circle.init(20, 0, dt / 100);
-
       circles.push(circle);
     }
 
+    // -- empilement des cercles --
     circle0 = circles[0];
-
     circle0.xC = WIDTH / 2;
     circle0.yC = HEIGHT / 2;
     for (var i = 1; i < circles.length; i++) {
       circle0.addChild(circles[i]);
     }
-
   }
 };
 
 
+var updateDrawing = false;
 // Global variables -->
 
 function setup() {
   frameRate(20);
   createCanvas(WIDTH, HEIGHT);
-  //angleMode(DEGREES);
   noFill();
-  stroke(255);
+
   background(0);
   Points.init();
   Shape.init();
-  var truc = Object.create(Complex);
-  var truc2 = Object.create(Complex);
-  truc.init(-12, -0.1);
-  truc2.init(12, 1);
-  truc.mult(truc2);
-  // console.log(truc.re, truc.im); //mod(), truc.arg());
-
-
-
 }
 
 function draw() {
-  background(0);
-  circle0.update();
-  strokeWeight(1);
-  stroke(0, 255, 0);
-  circle0.draw();
+  if (updateDrawing) {
+    background(0);
+    strokeWeight(1);
+    stroke(0, 255, 0, 100);
+    circle0.update();
+    circle0.draw();
 
+    stroke(0, 255, 255, 180);
+    Shape.draw();
 
-  stroke(0, 255, 255);
-  Shape.draw();
-  stroke(255, 0, 255);
-  strokeWeight(2);
-  Points.draw();
-
+    stroke(255, 0, 255);
+    strokeWeight(2);
+    Points.draw();
+  }
 }
 
-
-
 function mousePressed() {
+  updateDrawing = false;
   background(0);
   circle0.init(0, 0, 0);
   Shape.init();
@@ -153,6 +131,6 @@ function mouseDragged() {
 }
 
 function mouseReleased() {
-  Shape.draw();
+  updateDrawing = true;
   Shape.calculateCoefficients(10);
 }
