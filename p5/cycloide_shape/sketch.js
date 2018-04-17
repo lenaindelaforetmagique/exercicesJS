@@ -70,7 +70,7 @@ var Shape = {
       }
       res.kmult(1 / lTot);
 
-      circle.init(res.mod(), res.arg(), periode);
+      circle.init(res.mod(), res.arg(), periode * 2);
       circles.push(circle);
     }
 
@@ -132,5 +132,6 @@ function mouseDragged() {
 
 function mouseReleased() {
   updateDrawing = true;
+  Points.init();
   Shape.calculateCoefficients(10);
 }

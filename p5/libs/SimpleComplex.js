@@ -1,3 +1,23 @@
+/* SimpleComplex.js
+X. Morin
+----
+A simple class for simple calculations with complex numbers.
+
+Contains:
+* init    z=a+ib
+* init2   z=r×e^(iθ)
+* mod     |z|
+* arg     θ
+* add     z+=z2
+* sub     z-=z2
+* mult    z*=z2
+* kmult   z*=k
+
+Create a complex object with:
+var a_complex_number = Object.create(Complex);
+
+*/
+
 var Complex = {
   re: 0,
   im: 0,
@@ -23,20 +43,20 @@ var Complex = {
       return 2 * Math.atan(this.im / (this.re + this.mod()));
     }
   },
-  add: function(nb) {
-    // adds to this _nb_
-    this.re += nb.re;
-    this.im += nb.im;
+  add: function(z2) {
+    // adds to this _z2_
+    this.re += z2.re;
+    this.im += z2.im;
   },
-  sub: function(nb) {
-    // substracts this by _nb_
-    this.re -= nb.re;
-    this.im -= nb.im;
+  sub: function(z2) {
+    // substracts this by _z2_
+    this.re -= z2.re;
+    this.im -= z2.im;
   },
-  mult: function(nb) {
-    // multiplies this by _nb_
-    this.init(this.re * nb.re - this.im * nb.im,
-      this.re * nb.im + this.im * nb.re);
+  mult: function(z2) {
+    // multiplies this by _z2_
+    this.init(this.re * z2.re - this.im * z2.im,
+      this.re * z2.im + this.im * z2.re);
   },
   kmult: function(scal) {
     // multiplies this by _scal_
