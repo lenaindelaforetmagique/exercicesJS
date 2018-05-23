@@ -1,6 +1,6 @@
 // <-- Global variables
-var WIDTH = 800;
-var HEIGHT = 600;
+var WIDTH = 800; //150; //800;
+var HEIGHT = 600; //200; //600;
 var circle0 = Object.create(Circle);
 circle0.init(0, 0, 0);
 
@@ -54,6 +54,8 @@ var Shape = {
     lTot += dl;
 
     // -- Coefficients de Fourier --
+    var listeCoeffs = [];
+
     for (var n = -nMax; n <= nMax; n++) {
       // -- harmonique n --
       var circle = Object.create(Circle);
@@ -72,6 +74,9 @@ var Shape = {
 
       circle.init(res.mod(), res.arg(), periode * 2);
       circles.push(circle);
+      listeCoeffs.push(circle.r);
+      listeCoeffs.push(circle.teta);
+      listeCoeffs.push(circle.dteta);
     }
 
     // -- empilement des cercles --
@@ -81,6 +86,8 @@ var Shape = {
     for (var i = 1; i < circles.length; i++) {
       circle0.addChild(circles[i]);
     }
+    console.log("note");
+    console.log(listeCoeffs.toString());
   }
 };
 

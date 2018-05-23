@@ -18,6 +18,71 @@ var a_complex_number = Object.create(Complex);
 
 */
 
+var POLAR = true;
+
+class newComplex {
+  constructor(var1, var2, polar = false) {
+    if (polar) {
+      this.realPart = var1 * Math.cos(var2);
+      this.imaginaryPart = var1 * Math.sin(var2);
+    } else {
+      this.realPart = var1;
+      this.imaginaryPart = var2;
+    }
+  }
+
+  get Re() {
+    return this.realPart;
+  }
+  get Im() {
+    return this.imaginaryPart;
+  }
+
+  get mod() {
+    return Math.sqrt(this.Re ** 2 + this.Im ** 2);
+  }
+  get arg() {
+    if (this.Im === 0 && this.Re < 0) {
+      return Math.PI;
+    } else {
+      return 2 * Math.atan(this.Im / (this.Re + this.mod));
+    }
+  }
+
+  add(z2) {
+    if (typeof(z2) === typeof(this)) {
+      this.realPart += z2.Re;
+      this.imaginaryPart += z2.Im;
+    } else {
+      this.realPart += z2;
+    }
+    return this;
+  }
+
+  sub(z2) {
+    if (typeof(z2) === typeof(this)) {
+      this.realPart -= z2.Re;
+      this.imaginaryPart -= z2.Im;
+    } else {
+      this.realPart += z2;
+    }
+    return this;
+  }
+
+  mul(z2) {
+    if (typeof(z2) === typeof(this)) {
+      this.realPart -= z2.Re;
+      this.imaginaryPart -= z2.Im;
+    } else {
+      this.realPart += z2;
+    }
+    return this;
+  }
+
+};
+
+
+
 var Complex = {
   re: 0,
   im: 0,
