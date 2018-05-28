@@ -1,9 +1,9 @@
 // <-- Global variables
 var WIDTH = 1050;
 var HEIGHT = 600;
-var chaine = "ABCDEFGHIJKL\nMNOPQRSTUVWX\nYZ";
-//"abcdefghijkl\nmnopqrstuvwx\nyz";
-//"Joyeux\nAnniversaire\n   Valery";
+var chaine = "A   BCDEFGHIJKL\nMNOPQRSTUVWX\nYZ";
+//var chaine = "abcdefghijkl\nmnoOpqrstuvwx\nyz";
+var chaine = "Joyeux\nAnniversaire\n   Valery";
 var listeCercles = [];
 
 var X0 = 0;
