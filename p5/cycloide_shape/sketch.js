@@ -1,6 +1,6 @@
 // <-- Global variables
-var WIDTH = 800; //150; //800;
-var HEIGHT = 600; //200; //600;
+var WIDTH = 150; //800; //150; //800;
+var HEIGHT = 200; //200; //600;
 var circle0 = Object.create(Circle);
 circle0.init(0, 0, 0);
 
