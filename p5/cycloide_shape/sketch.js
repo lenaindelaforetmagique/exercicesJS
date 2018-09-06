@@ -103,6 +103,8 @@ function setup() {
   background(0);
   Points.init();
   Shape.init();
+
+  freezeMove();
 }
 
 function draw() {
@@ -142,3 +144,20 @@ function mouseReleased() {
   Points.init();
   Shape.calculateCoefficients(10);
 }
+
+
+var freezeMove = function() {
+  let events = [
+    "mousemove",
+    "touchmove",
+    //"touchstart",
+    //"touchend",
+    "touchcancel"
+  ];
+
+  for (let i = 0; i < events.length; i++) {
+    document.body.addEventListener(events[i], function(e) {
+      e.preventDefault();
+    });
+  };
+};
