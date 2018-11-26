@@ -1,0 +1,74 @@
+html, body {
+  /* margin: 0; */
+  /* padding: 0; */
+  /* height: 100%; */
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+#resultat {
+  font-size: 12px;
+}
+
+form {
+  font-size: 10px;
+}
+
+#personnes {
+  font-size: 10px;
+  /* margin: 0; */
+  /* padding: 0; */
+  background: #EEEEEE;
+  /* height: 100%; */
+  /* overflow: hidden; */
+}
+
+svg {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+text {
+  x: 10px;
+  font-size: 12px;
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+text.title {
+  font-size: 30px;
+}
+
+text.button {
+  cursor: pointer;
+}
+
+polyline.lev0 {
+  fill: none;
+  stroke: #999999;
+  stroke-width: 0.1;
+}
+
+polyline.lev1 {
+  fill: none;
+  stroke: #FF0000;
+  stroke-width: 0.2;
+}
+
+polygon.lev0 {
+  fill: rgba(0, 0, 0, 0.6);
+  stroke: black;
+  stroke-width: 0.01;
+}
+
+polygon.lev1 {
+  fill: rgba(173, 216, 230, 1);
+  stroke-width: 0;
+}
+
+/* polygon.lev0:hover {
+  fill: rgba(255, 0, 0, 0.5);
+} */
