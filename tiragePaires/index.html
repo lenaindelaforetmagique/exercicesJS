@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Tirage au sort de paires pour Noël</title>
+  <link rel="shorcut icon" href="icon.png" type="image/x-icon">
+  <meta charset="utf-8">
+
+  <!-- meta tags -->
+  <meta name="author" content="Xavier Morin">
+  <meta name="description" content="Tirage au sort pour cadeaux de Noël">
+  <!-- <meta name="keywords" content="map, projection, earth"> -->
+
+  <!-- Open Graph protocol : http://ogp.me/ -->
+  <meta property="og:title" content="Tirage au sort pour Noël">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Un outil pour tirer au sort les cadeaux en groupe">
+  <!-- <meta property="og:url" content="https://lenaindelaforetmagique.github.io/Geoproj/">
+  <meta property="og:image" content="http://lenaindelaforetmagique.github.io/Geoproj/screenshot.png"> -->
+
+  <!-- Style -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <button onclick="scriptGen.tirage()">Nouveau tirage !</button>
+  <div id="resultat">Résultats du tirage</div>
+  <hr>
+  <p><button onclick="scriptGen.ajoutPersonne()">Ajouter personne</button>
+    <button onclick="scriptGen.init()">Tout effacer</button></p>
+  <form name="form1">
+    <select id = "list1" name="list1"></select> ne fait pas de cadeau à
+    <select id ="list2" name="list2"></select>
+  </form>
+  <button onclick="scriptGen.ajoutLien()">Ajouter lien</button>
+
+
+  <div id="personnes">Contenu du chapeau</div>
+
+  <script type="module">import * as scriptNoel from './scripts/scriptNoel.js'; window.scriptNoel=scriptNoel;</script>
+  <script type="module">import * as scriptGen from './script.js'; window.scriptGen=scriptGen;</script>
+
+
+
+</body>
+
+</html>
