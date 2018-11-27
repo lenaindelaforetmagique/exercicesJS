@@ -25,21 +25,35 @@
 </head>
 
 <body>
+  <header>
+    <h1>Paire-Noël</h1>
+    <p>Un outil de tirage aléatoire de "qui fait un cadeau à qui ?"</p>
+  </header>
+  <article>
+    <h2>Contenu du chapeau</h2>
+    <div id="personnes"></div>
 
 
-  <button onclick="scriptGen.tirage()">Nouveau tirage !</button>
-  <div id="resultat">Résultats du tirage</div>
-  <hr>
-  <p><button onclick="scriptGen.ajoutPersonne()">Ajouter personne</button>
-    <button onclick="scriptGen.init()">Tout effacer</button></p>
-  <form name="form1">
-    <select id = "list1" name="list1"></select> ne fait pas de cadeau à
-    <select id ="list2" name="list2"></select>
-  </form>
-  <button onclick="scriptGen.ajoutLien()">Ajouter lien</button>
+    <div class="command">
+      <button onclick="scriptGen.ajoutPersonne()">Ajouter personne</button> -
 
+      <button onclick="scriptGen.init()">Tout effacer</button> -
 
-  <div id="personnes">Contenu du chapeau</div>
+      <select id="list1"></select> ne fait pas de cadeau à
+      <select id="list2"></select>
+      <button onclick="scriptGen.ajoutLien()">Ajouter lien</button>
+    </div>
+
+  </article>
+
+  <article>
+    <h2>Résultat du tirage</h2>
+    <div id="resultat"></div>
+    <p class="command">
+      <button onclick="scriptGen.tirage()">Nouveau tirage !</button>
+    </p>
+  </article>
+
 
   <script type="module">import * as scriptNoel from './scripts/scriptNoel.js'; window.scriptNoel=scriptNoel;</script>
   <script type="module">import * as scriptGen from './script.js'; window.scriptGen=scriptGen;</script>

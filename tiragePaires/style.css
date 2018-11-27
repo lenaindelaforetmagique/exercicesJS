@@ -1,74 +1,36 @@
 html, body {
-  /* margin: 0; */
-  /* padding: 0; */
-  /* height: 100%; */
+  background: #EEEEEE;
+  margin: auto;
+  width: 800px;
+  align-content: center;
   font-family: 'Ubuntu Mono', monospace;
 }
 
-#resultat {
-  font-size: 12px;
-}
-
-form {
-  font-size: 10px;
-}
-
-#personnes {
-  font-size: 10px;
-  /* margin: 0; */
-  /* padding: 0; */
-  background: #EEEEEE;
-  /* height: 100%; */
-  /* overflow: hidden; */
-}
-
-svg {
+header p {
   margin: 0;
   padding: 0;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  height: 100%;
-  width: 100%;
+  font-size: 80%;
+  font-style: italic;
 }
 
-text {
-  x: 10px;
-  font-size: 12px;
-  fill: rgba(0, 0, 0, 0.7);
+h1, h2 {
+  margin: 0;
+  padding: 0;
 }
 
-text.title {
-  font-size: 30px;
+article {
+  background: #DDDDDD;
+  margin: 20px;
+  padding: 2px;
+  font-size: 80%;
 }
 
-text.button {
-  cursor: pointer;
+article p {
+  line-height: 8px;
 }
 
-polyline.lev0 {
-  fill: none;
-  stroke: #999999;
-  stroke-width: 0.1;
+.command {
+  background: #BBBBBB;
+  padding: 4px;
+  margin: 0;
 }
-
-polyline.lev1 {
-  fill: none;
-  stroke: #FF0000;
-  stroke-width: 0.2;
-}
-
-polygon.lev0 {
-  fill: rgba(0, 0, 0, 0.6);
-  stroke: black;
-  stroke-width: 0.01;
-}
-
-polygon.lev1 {
-  fill: rgba(173, 216, 230, 1);
-  stroke-width: 0;
-}
-
-/* polygon.lev0:hover {
-  fill: rgba(255, 0, 0, 0.5);
-} */

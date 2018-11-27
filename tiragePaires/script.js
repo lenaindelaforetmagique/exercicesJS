@@ -1,5 +1,3 @@
-var hat = new scriptNoel.Hat();
-
 var removeDOMChildren = function(dom) {
   //removes all children of dom
   while (dom.firstChild) {
@@ -11,11 +9,8 @@ var removeDOMChildren = function(dom) {
 var showResult = function(hat) {
   var domParent = document.getElementById('resultat');
   removeDOMChildren(domParent);
-  var dom = document.createElement('p');
-  dom.innerHTML = "<strong>Résultat du tirage :</strong>";
-  domParent.appendChild(dom);
   hat.resultLines().forEach(function(v) {
-    dom = document.createElement('p');
+    var dom = document.createElement('p');
     dom.innerHTML = v;
     domParent.appendChild(dom);
   });
@@ -24,38 +19,34 @@ var showResult = function(hat) {
 var showPersons = function(hat) {
   var domParent = document.getElementById('personnes');
   removeDOMChildren(domParent);
-  var dom = document.createElement('p');
-  dom.innerHTML = "<strong>Contenu du chapeau :</strong>";
-  domParent.appendChild(dom);
   hat.persons.forEach(function(v) {
-    dom = document.createElement('p');
+    var dom = document.createElement('p');
     dom.innerHTML = v.toString();
     domParent.appendChild(dom);
   });
-};
+}
 
 var showLists = function(hat) {
   var doms = ["list1", "list2"];
-  var txt = ["Personne 1", "Personne 2"]
   for (i = 0; i < 2; i++) {
     var domParent = document.getElementById(doms[i]);
+    var j = domParent.selectedIndex;
     removeDOMChildren(domParent);
-    var dom = document.createElement('option');
-    dom.innerHTML = txt[i];
-    domParent.appendChild(dom);
     hat.persons.forEach(function(v) {
-      dom = document.createElement('option');
+      var dom = document.createElement('option');
       dom.innerHTML = v.py_name;
       domParent.appendChild(dom);
     });
+    domParent.selectedIndex = j;
   }
 }
-
 
 var showHat = function(hat) {
   showResult(hat);
   showPersons(hat);
   showLists(hat);
+
+  saveHistory();
 }
 
 export var tirage = function() {
@@ -65,46 +56,78 @@ export var tirage = function() {
 
 export var init = function() {
   hat = new scriptNoel.Hat();
+  _history = [];
   showHat(hat);
+}
+
+var addPerson = function(name) {
+  hat.addPerson(name);
+  _history.push(["addP", name]);
 }
 
 export var ajoutPersonne = function() {
   var result = window.prompt("Saisissez le nom", "");
   if (result != "" && result != null) {
-    hat.addPerson(result);
+    addPerson(result);
     showHat(hat);
   }
 }
 
+var addLink = function(i, j) {
+  hat.addLink(i, j);
+  _history.push(["addL", i, j]);
+}
+
 export var ajoutLien = function() {
   var doms = ["list1", "list2"];
-  var i = document.getElementById("list1").selectedIndex - 1;
-  var j = document.getElementById("list2").selectedIndex - 1;
+  var i = document.getElementById("list1").selectedIndex;
+  var j = document.getElementById("list2").selectedIndex;
   if (i >= 0 && j >= 0) {
-    hat.addLink(i, j);
+    addLink(i, j);
   }
   showHat(hat);
 }
 
-// -----------------
-
-var names = ["Lorraine", "Antoine", "Stéphane", "Xavier",
-  "Jean-Baptiste", "Pierre-Hugues", "Elsa", "Emmanuelle"
-];
-
-for (var i = 0; i < names.length; i++) {
-  hat.addPerson(names[i]);
+var saveHistory = function() {
+  localStorage["PaireNoelHistory"] = JSON.stringify(_history);
 }
 
-for (var i = 0; i < 3; i++) {
-  hat.addLink(i, i + 5);
-  hat.addLink(i + 5, i);
+var playSavedHistory = function() {
+  _history = [];
+  var stored = localStorage["PaireNoelHistory"];
+  // console.log("playHist", hist, typeof(hist), hist.length);
+  var res = false;
+  if (stored) {
+    var hist = JSON.parse(stored);
+    if (hist.length > 0) {
+      for (var i = 0; i < hist.length; i++) {
+        if (hist[i][0] == "addP") {
+          addPerson(hist[i][1]);
+        } else if (hist[i][0] == "addL") {
+          addLink(hist[i][1], hist[i][2]);
+        }
+      };
+      res = true;
+    }
+  }
+  return res;
+}
+
+// -----------------
+var hat = new scriptNoel.Hat();
+var _history = [];
+
+if (!playSavedHistory()) {
+  var names = ["Lorraine", "Antoine", "Stéphane", "Xavier",
+    "Jean-Baptiste", "Pierre-Hugues", "Elsa", "Emmanuelle"
+  ];
+  for (var i = 0; i < names.length; i++) {
+    addPerson(names[i]);
+  }
+  for (var i = 0; i < 3; i++) {
+    addLink(i, i + 5);
+    addLink(i + 5, i);
+  }
 }
 
 showHat(hat);
-
-
-
-
-
-// tirage();
