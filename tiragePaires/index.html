@@ -2,8 +2,8 @@
 <html>
 
 <head>
-  <title>Tirage au sort de paires pour Noël</title>
-  <link rel="shorcut icon" href="icon.png" type="image/x-icon">
+  <title>Paire-Noël</title>
+  <!-- <link rel="shorcut icon" href="icon.png" type="image/x-icon"> -->
   <meta charset="utf-8">
 
   <!-- meta tags -->
@@ -12,11 +12,9 @@
   <!-- <meta name="keywords" content="map, projection, earth"> -->
 
   <!-- Open Graph protocol : http://ogp.me/ -->
-  <meta property="og:title" content="Tirage au sort pour Noël">
+  <meta property="og:title" content="Paire-Noël">
   <meta property="og:type" content="website">
   <meta property="og:description" content="Un outil pour tirer au sort les cadeaux en groupe">
-  <!-- <meta property="og:url" content="https://lenaindelaforetmagique.github.io/Geoproj/">
-  <meta property="og:image" content="http://lenaindelaforetmagique.github.io/Geoproj/screenshot.png"> -->
 
   <!-- Style -->
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
@@ -29,21 +27,17 @@
     <h1>Paire-Noël</h1>
     <p>Un outil de tirage aléatoire de "qui fait un cadeau à qui ?"</p>
   </header>
+
   <article>
     <h2>Contenu du chapeau</h2>
     <div id="personnes"></div>
-
-
-    <div class="command">
+    <p class="command">
       <button onclick="scriptGen.ajoutPersonne()">Ajouter personne</button> -
-
       <button onclick="scriptGen.init()">Tout effacer</button> -
-
       <select id="list1"></select> ne fait pas de cadeau à
       <select id="list2"></select>
       <button onclick="scriptGen.ajoutLien()">Ajouter lien</button>
-    </div>
-
+    </p>
   </article>
 
   <article>
@@ -54,11 +48,8 @@
     </p>
   </article>
 
-
   <script type="module">import * as scriptNoel from './scripts/scriptNoel.js'; window.scriptNoel=scriptNoel;</script>
   <script type="module">import * as scriptGen from './script.js'; window.scriptGen=scriptGen;</script>
-
-
 
 </body>
 
