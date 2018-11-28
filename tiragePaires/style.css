@@ -1,5 +1,6 @@
 html {
   background-image: linear-gradient(to bottom right, #CC0000, #220000);
+  background-attachment: fixed;
   height: 100%;
 }
 
@@ -15,9 +16,15 @@ header {
   position: relative;
 }
 
-header p {
-  margin: 10px;
+header h1 {
+  margin: 0;
   padding: 0;
+  padding-top: 30px;
+}
+
+header p {
+  margin: 0;
+  padding-left: 20px;
   font-size: 80%;
   font-style: italic;
 }
@@ -28,23 +35,24 @@ header img {
   top: 0;
 }
 
-h1, h2 {
-  margin: 0;
-  padding: 0;
+article {
+  background: rgba(0, 0, 0, 0.3);
+  margin: 4px;
+  font-size: 80%;
 }
 
-article {
-  /* opacity: 0.5; */
-  background: rgba(0, 0, 0, 0.3);
-  /*#DDDDDD; */
-  back margin: 20px;
-  padding: 2px;
-  font-size: 80%;
+article h2 {
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding-left: 5px;
+}
+
+article p {
+  margin: 10px;
 }
 
 .command {
   background: rgba(0, 0, 0, 0.5);
-  /* #BBBBBB; */
   padding: 4px;
   margin: 0;
 }
