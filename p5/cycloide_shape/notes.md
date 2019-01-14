@@ -6,6 +6,11 @@ _X.Morin_
  * Vidéo El Jj : https://www.youtube.com/watch?v=uazPP0ny3XQ
  * Article Wikipédia : https://fr.wikipedia.org/wiki/S%C3%A9rie_de_Fourier
 
+
+ ## Screenshot!
+
+![Screenshot](screenshot.png)
+
 ## Calculs
 
 ### Théorie

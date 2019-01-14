@@ -1,6 +1,7 @@
 // <-- Global variables
-var WIDTH = 150; //800; //150; //800;
-var HEIGHT = 200; //200; //600;
+var WIDTH = window.innerWidth * 0.99;
+var HEIGHT = window.innerHeight * 0.99;
+
 var circle0 = Object.create(Circle);
 circle0.init(0, 0, 0);
 
@@ -100,7 +101,7 @@ function setup() {
   createCanvas(WIDTH, HEIGHT);
   noFill();
 
-  background(0);
+  background(238, 238, 238);
   Points.init();
   Shape.init();
 
@@ -109,24 +110,24 @@ function setup() {
 
 function draw() {
   if (updateDrawing) {
-    background(0);
-    strokeWeight(1);
-    stroke(0, 255, 0, 100);
+    background(238, 238, 238);
+    strokeWeight(2);
+    stroke(0, 200, 0, 100);
     circle0.update();
     circle0.draw();
-
-    stroke(0, 255, 255, 180);
+    strokeWeight(2);
+    stroke(69, 86, 92);
     Shape.draw();
 
-    stroke(255, 0, 255);
-    strokeWeight(2);
+    stroke(255, 0, 0);
+    strokeWeight(3);
     Points.draw();
   }
 }
 
 function mousePressed() {
   updateDrawing = false;
-  background(0);
+  background(238, 238, 238);
   circle0.init(0, 0, 0);
   Shape.init();
   Points.init();
@@ -134,12 +135,18 @@ function mousePressed() {
 
 function mouseDragged() {
   strokeWeight(3);
-  stroke(255);
+  stroke(69, 86, 92);
+
   point(mouseX, mouseY);
+
   Shape.points.push(createVector(mouseX, mouseY));
+
 }
 
+
+
 function mouseReleased() {
+
   updateDrawing = true;
   Points.init();
   Shape.calculateCoefficients(10);
