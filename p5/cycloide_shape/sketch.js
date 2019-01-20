@@ -1,6 +1,8 @@
 // <-- Global variables
-var WIDTH = window.innerWidth * 0.99;
-var HEIGHT = window.innerHeight * 0.99;
+var WIDTH = window.innerWidth;
+var HEIGHT = window.innerHeight;
+
+var bgcolor = 238;
 
 var circle0 = Object.create(Circle);
 circle0.init(0, 0, 0);
@@ -99,9 +101,23 @@ var updateDrawing = false;
 function setup() {
   frameRate(20);
   createCanvas(WIDTH, HEIGHT);
+
+  let canvasDom = document.getElementsByTagName("canvas")[0];
+  canvasDom.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+  });
+
+  // canvasDom.addEventListener("touchmove", function(e) {
+  //   e.preventDefault();
+  // });
+
+  // canvasDom.addEventListener("touchend", function(e) {
+  //   e.preventDefault();
+  // });
+
   noFill();
 
-  background(238, 238, 238);
+  background(bgcolor, bgcolor, bgcolor);
   Points.init();
   Shape.init();
 
@@ -110,7 +126,7 @@ function setup() {
 
 function draw() {
   if (updateDrawing) {
-    background(238, 238, 238);
+    background(bgcolor, bgcolor, bgcolor);
     strokeWeight(2);
     stroke(0, 200, 0, 100);
     circle0.update();
@@ -127,7 +143,7 @@ function draw() {
 
 function mousePressed() {
   updateDrawing = false;
-  background(238, 238, 238);
+  background(bgcolor, bgcolor, bgcolor);
   circle0.init(0, 0, 0);
   Shape.init();
   Points.init();
@@ -136,17 +152,12 @@ function mousePressed() {
 function mouseDragged() {
   strokeWeight(3);
   stroke(69, 86, 92);
-
   point(mouseX, mouseY);
-
   Shape.points.push(createVector(mouseX, mouseY));
-
 }
 
 
-
 function mouseReleased() {
-
   updateDrawing = true;
   Points.init();
   Shape.calculateCoefficients(10);
